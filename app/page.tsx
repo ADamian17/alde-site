@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import styles from './page.module.css';
 
 export default function Pricing() {
@@ -76,12 +75,6 @@ export default function Pricing() {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Pricing - Garcia&apos;s Detailing</title>
-        <meta name="description" content="Garcia's Detailing pricing guide" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main className={styles.main}>
         <div className={styles.header}>
           <div className={styles.logoContainer}>
@@ -179,7 +172,7 @@ export default function Pricing() {
             <p className={styles.disclaimer}>FINAL PRICE IS CONFIRMED AFTER INSPECTION</p>
 
             <div className={styles.phoneContainer}>
-              CALL OR TEXT <a href="tel:7862319355" className={styles.phoneLink}>786-231-9355</a> TO REQUEST AN APPOINTMENT
+              CALL OR TEXT <a href="tel:5106808727" className={styles.phoneLink}>510-680-8727</a> TO REQUEST AN APPOINTMENT
             </div>
           </div>
         </div>

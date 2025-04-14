@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Dennis Detailing - Pricing",
+  title: "Denis Mobil Detailing - Pricing",
   description: "Professional auto detailing services",
-  metadataBase: new URL("https://alde-site.vercel.app/"),
+  metadataBase: new URL("https://aldenisdetialing.vercel.app/"),
   openGraph: {
-    title: "Dennis Detailing - Pricing",
+    title: "Denis Mobil Detailing - Pricing",
     description: "Professional auto detailing services",
-    url: 'https://alde-site.vercel.app/',
-    siteName: "Dennis Detailing - Pricing",
+    url: 'https://aldenisdetialing.vercel.app/',
+    siteName: "Denis Mobil Detailing - Pricing",
     images: [
       {
         url: 'https://cdn.builder.io/api/v1/image/assets%2Ffa8b7a0b825e42fb9e2d36413f883aea%2F810d4ea4dc8644a785ceaeaed60ebd25', // Must be an absolute URL
