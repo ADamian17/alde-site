@@ -1,5 +1,6 @@
-import { Title } from '@mantine/core';
+import { Card, Container, SimpleGrid, Space, Text, Title } from '@mantine/core';
 import styles from './page.module.css';
+import PricingCard from '@/components/PricingCard';
 
 export default function Pricing() {
   const packageData = {
@@ -75,7 +76,7 @@ export default function Pricing() {
   };
 
   return (
-    <div className={styles.container}>
+    <Container size="xl">
       <main className={styles.main}>
         <div className={styles.header}>
           <div className={styles.logoContainer}>
@@ -87,48 +88,13 @@ export default function Pricing() {
         </div>
 
         {/* Service Packages */}
-        <div className={styles.packagesGrid}>
+        <SimpleGrid cols={{ base: 1, md: 3 }}>
           {Object.values(packageData).map((pkg) => (
-            <div key={pkg.title} className={styles.packageCard}>
-              <div className={styles.packageHeader}>
-                <h2 className={styles.packageTitle}>{pkg.title}</h2>
-                <p className={styles.packagePrice}>{pkg.price}</p>
-              </div>
-
-              <div className={styles.packageContent}>
-                <div className={styles.packageSection}>
-                  <h3 className={styles.sectionTitle}>EXTERIOR</h3>
-                  <ul className={styles.serviceList}>
-                    {pkg.exterior.map((item, index) => (
-                      <li key={index} className={styles.serviceItem}>
-                        <span className={styles.checkmark}>✓</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className={styles.packageSection}>
-                  <h3 className={styles.sectionTitle}>INTERIOR</h3>
-                  <ul className={styles.serviceList}>
-                    {pkg.interior.map((item, index) => (
-                      <li key={index} className={styles.serviceItem}>
-                        <span className={styles.checkmark}>✓</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className={styles.packageFooter}>
-                <button className={styles.bookButton}>
-                  Book Now
-                </button>
-              </div>
-            </div>
+            <PricingCard key={pkg.title} title={pkg.title} price={pkg.price} exterior={pkg.exterior} interior={pkg.interior} />
           ))}
-        </div>
+        </SimpleGrid>
+
+        <Space h="xl" />
 
         {/* Add-On Services */}
         <div className={styles.addOnCard}>
@@ -168,17 +134,15 @@ export default function Pricing() {
         </div>
 
         {/* Contact Information */}
-        <div className={styles.contactCard}>
-          <div className={styles.contactContent}>
-            <p className={styles.disclaimer}>PRICE MAY VARY ON THE CONDITION OF THE VEHICLE</p>
-            <p className={styles.disclaimer}>FINAL PRICE IS CONFIRMED AFTER INSPECTION</p>
+        <Card shadow='sm' radius={8} ta='center'>
+          <Text>PRICE MAY VARY ON THE CONDITION OF THE VEHICLE</Text>
+          <Text>FINAL PRICE IS CONFIRMED AFTER INSPECTION</Text>
 
-            <div className={styles.phoneContainer}>
-              CALL OR TEXT <a href="tel:5106808727" className={styles.phoneLink}>510-680-8727</a> TO REQUEST AN APPOINTMENT
-            </div>
+          <div className={styles.phoneContainer}>
+            CALL OR TEXT <a href="tel:5106808727" className={styles.phoneLink}>510-680-8727</a> TO REQUEST AN APPOINTMENT
           </div>
-        </div>
+        </Card>
       </main>
-    </div>
+    </Container>
   );
 }

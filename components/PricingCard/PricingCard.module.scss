@@ -1,0 +1,86 @@
+.packageCard {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.packageHeader {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.packageTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.packagePrice {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.packageContent {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.packageSection {
+  margin-bottom: 1.5rem;
+}
+
+.packageSection:last-child {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.serviceList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.serviceItem {
+  display: flex;
+  align-items: flex-start;
+}
+
+.checkmark {
+  color: #10b981;
+  margin-right: 0.5rem;
+}
+
+.packageFooter {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.bookButton {
+  width: 100%;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.bookButton:hover {
+  background-color: #b91c1c;
+}
