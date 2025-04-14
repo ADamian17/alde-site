@@ -1,3 +1,4 @@
+import { Title } from '@mantine/core';
 import styles from './page.module.css';
 
 export default function Pricing() {
@@ -80,7 +81,8 @@ export default function Pricing() {
           <div className={styles.logoContainer}>
             <img src="/alde-site.png" alt="Garcia's Detailing" className={styles.logo} />
           </div>
-          <h1 className={styles.title}>PRICING GUIDE</h1>
+
+          <Title>PRICING GUIDE</Title>
           <p className={styles.subtitle}>Professional auto detailing services</p>
         </div>
 

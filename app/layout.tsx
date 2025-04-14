@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core';
+import '@mantine/core/styles.css';
 
 export const metadata: Metadata = {
   title: "Denis Mobil Detailing - Pricing",
@@ -41,16 +42,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body>
-        {children}
-      </body>
-    </html>
-  );
-}
+const RootLayout = ({ children }: Readonly<{ children: React.ReactNode; }>) => (
+  <html lang="en" {...mantineHtmlProps}>
+    <head>
+      <ColorSchemeScript />
+    </head>
+    <body>
+      <MantineProvider>{children}</MantineProvider>
+    </body>
+  </html>
+);
+
+export default RootLayout;
