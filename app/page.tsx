@@ -1,12 +1,20 @@
-import { Card, Container, SimpleGrid, Space, Text, Title } from '@mantine/core';
+"use client";
+import { Card, Container, Group, SegmentedControl, SimpleGrid, Space, Text, Title } from '@mantine/core';
 import styles from './page.module.css';
 import PricingCard from '@/components/PricingCard';
+import { useState } from 'react';
 
 export default function Pricing() {
+  const [value, setValue] = useState<string>('sedan');
+
   const packageData = {
     standard: {
       title: "STANDARD",
-      price: "$100",
+      price: {
+        sedan: "$100",
+        suv: "$115",
+        truck: "$140"
+      },
       exterior: [
         "WHEELS / TIRES",
         "PRE WASH TREATMENT",
@@ -23,7 +31,11 @@ export default function Pricing() {
     },
     washWax: {
       title: "WASH & WAX",
-      price: "$200",
+      price: {
+        sedan: "$200",
+        suv: "$225",
+        truck: "$250"
+      },
       exterior: [
         "WHEELS / TIRES",
         "PRE WASH & HAND WASH",
@@ -41,7 +53,11 @@ export default function Pricing() {
     },
     fullDetail: {
       title: "FULL DETAIL",
-      price: "$350",
+      price: {
+        sedan: "$350",
+        suv: "$375",
+        truck: "$400"
+      },
       exterior: [
         "FULL WASH & WAX EXTERIOR PROCESS"
       ],
@@ -84,13 +100,34 @@ export default function Pricing() {
           </div>
 
           <Title>PRICING GUIDE</Title>
-          <p className={styles.subtitle}>Professional auto detailing services</p>
+          <Text className={styles.subtitle}>Professional auto detailing services</Text>
         </div>
 
+        {/* Vehicle Type Selection */}
+        <Group justify='center' mt='xl' mb='xl'>
+          <SegmentedControl
+            size='md'
+            withItemsBorders={false}
+            value={value}
+            onChange={setValue}
+            data={[
+              { label: 'Sedan', value: 'sedan' },
+              { label: 'SUV', value: 'suv' },
+              { label: 'Truck', value: 'truck' },
+            ]}
+          />
+        </Group>
+
         {/* Service Packages */}
-        <SimpleGrid cols={{ base: 1, md: 3 }}>
+        <SimpleGrid cols={{ base: 1, md: Object.values(packageData).length }}>
           {Object.values(packageData).map((pkg) => (
-            <PricingCard key={pkg.title} title={pkg.title} price={pkg.price} exterior={pkg.exterior} interior={pkg.interior} />
+            <PricingCard
+              key={pkg.title}
+              title={pkg.title}
+              price={pkg.price[value as keyof typeof pkg.price]}
+              exterior={pkg.exterior}
+              interior={pkg.interior}
+            />
           ))}
         </SimpleGrid>
 

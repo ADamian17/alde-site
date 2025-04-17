@@ -31,7 +31,6 @@ const BookNowForm: React.FC<BookNowFormProps> = ({ selectedPackage, close }) => 
       message: '',
       package: selectedPackage,
     },
-
     validate: {
       fullName: (value) => (value.length > 0 ? null : 'Full name is required'),
       message: (value) => (value.length > 0 ? null : 'Message is required'),
