@@ -8,8 +8,8 @@ import BookNowForm from '../BookNowForm'
 type PricingCardProps = {
   title: string;
   price: string;
-  exterior: string[];
-  interior: string[];
+  exterior: Array<{ service: string }>;
+  interior: Array<{ service: string }>;
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({ title, price, exterior, interior }) => {
@@ -20,7 +20,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ title, price, exterior, inter
       <Card shadow='sm' radius={8}>
         <CardSection className={styles.packageHeader}>
           <Title order={2} className={styles.packageTitle}>{title}</Title>
-          <Text className={styles.packagePrice}>{price}</Text>
+          <Text className={styles.packagePrice}>{price}$</Text>
         </CardSection>
 
         <div className={styles.packageContent}>
@@ -31,7 +31,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ title, price, exterior, inter
               {exterior.map((item, index) => (
                 <li key={index} className={styles.serviceItem}>
                   <span className={styles.checkmark}>✓</span>
-                  {item}
+                  {item.service}
                 </li>
               ))}
             </ul>
@@ -44,7 +44,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ title, price, exterior, inter
               {interior.map((item, index) => (
                 <li key={index} className={styles.serviceItem}>
                   <span className={styles.checkmark}>✓</span>
-                  {item}
+                  {item.service}
                 </li>
               ))}
             </ul>

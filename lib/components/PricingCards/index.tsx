@@ -5,8 +5,18 @@ import styles from './PricingCards.module.scss'
 import { PricingCardsProps } from './Pricing.types'
 import PricingCard from '../PricingCard'
 
-const PricingCards: React.FC<PricingCardsProps> = ({ packages, addOns }) => {
-  const [value, setValue] = useState<string>('sedan');
+const PricingCards: React.FC<PricingCardsProps> = ({
+  packages,
+  addOns,
+  vehicleTypeSelection
+}) => {
+  const [priceByVehicle, setPriceByVehicle] = useState<string>('sedan');
+
+  const getPackagePrice = (price: Record<string, string>, target: string) => {
+    if (typeof price === 'undefined' || typeof price[target] === 'undefined') return "0";
+
+    return price[target]
+  };
 
   return (
     <Container size="xl">
@@ -23,15 +33,11 @@ const PricingCards: React.FC<PricingCardsProps> = ({ packages, addOns }) => {
         {/* Vehicle Type Selection */}
         <Group justify='center' mt='xl' mb='xl'>
           <SegmentedControl
+            data={vehicleTypeSelection}
+            onChange={setPriceByVehicle}
             size='md'
+            value={priceByVehicle}
             withItemsBorders={false}
-            value={value}
-            onChange={setValue}
-            data={[
-              { label: 'Sedan', value: 'sedan' },
-              { label: 'SUV', value: 'suv' },
-              { label: 'Truck', value: 'truck' },
-            ]}
           />
         </Group>
 
@@ -39,9 +45,9 @@ const PricingCards: React.FC<PricingCardsProps> = ({ packages, addOns }) => {
         <SimpleGrid cols={{ base: 1, md: packages.length }}>
           {(packages ?? []).map((pkg) => (
             <PricingCard
-              key={pkg.title}
+              key={pkg.title + Date.now()}
               title={pkg.title}
-              price={pkg.price[value as keyof typeof pkg.price]}
+              price={getPackagePrice(pkg.price, priceByVehicle)}
               exterior={pkg.exterior}
               interior={pkg.interior}
             />
@@ -53,7 +59,7 @@ const PricingCards: React.FC<PricingCardsProps> = ({ packages, addOns }) => {
         {/* Add-On Services */}
         <div className={styles.addOnCard}>
           <div className={styles.cardHeader}>
-            <h2 className={styles.cardTitle}>ADD-ON SERVICES</h2>
+            <h2 className={styles.cardTitle}>ADD-ON (Optional Services)</h2>
           </div>
 
           <div className={styles.addOnContent}>
