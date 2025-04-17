@@ -1,12 +1,22 @@
 import { Button, Combobox, Group, Input, Space, Stack, Text, Textarea, TextInput, useCombobox } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import React from 'react'
+import React, { ComponentRef, useRef } from 'react'
+import ReCAPTCHA from 'react-google-recaptcha';
 
 type BookNowFormProps = {
   selectedPackage: string;
+  close: () => void;
 }
 
-const BookNowForm: React.FC<BookNowFormProps> = ({ selectedPackage }) => {
+type FormValues = {
+  fullName: string;
+  phone: string;
+  message: string;
+  package: string;
+}
+
+const BookNowForm: React.FC<BookNowFormProps> = ({ selectedPackage, close }) => {
+  const recaptchaRef = useRef<ComponentRef<typeof ReCAPTCHA>>(null);
   const packages = ['STANDARD', 'WASH & WAX', 'FULL DETAIL',];
 
   const combobox = useCombobox({
@@ -36,6 +46,37 @@ const BookNowForm: React.FC<BookNowFormProps> = ({ selectedPackage }) => {
     </Combobox.Option>
   ));
 
+  const handleOnSubmit = async (values: FormValues) => {
+
+    if (!recaptchaRef.current) {
+      alert('Please complete the captcha');
+      return;
+    }
+
+    const recaptchaValue = recaptchaRef.current.getValue();
+
+    try {
+      const formData = new FormData();
+      formData.append('utf8', '✓');
+      formData.append('g-recaptcha-response', recaptchaValue!);
+
+      Object.keys(values).forEach((key) => {
+        formData.append(key, values[key as keyof FormValues]);
+      });
+
+      const res = await fetch(`https://formkeep.com/f/${process.env.NEXT_PUBLIC_FORMKEEP_API_KEY}`, {
+        method: 'POST',
+        body: formData
+      })
+
+      if (res.ok && typeof close === "function") {
+        close();
+      }
+    } catch (error) {
+      console.error("[Book now form]", error);
+    }
+  }
+
   return (
     <section>
       <Text fw="bold">PRICE MAY VARY ON THE CONDITION OF THE VEHICLE</Text>
@@ -43,7 +84,7 @@ const BookNowForm: React.FC<BookNowFormProps> = ({ selectedPackage }) => {
 
       <Space h="xl" />
 
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <form onSubmit={form.onSubmit(handleOnSubmit)}>
         <Stack>
           <Combobox
             store={combobox}
@@ -99,6 +140,13 @@ const BookNowForm: React.FC<BookNowFormProps> = ({ selectedPackage }) => {
             {...form.getInputProps('message')}
             rows={5}
           />
+
+          <div className="recaptcha-container">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+            />
+          </div>
 
           <Group justify="flex-end" mt="md">
             <Button color='violet' type="submit">Submit</Button>

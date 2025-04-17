@@ -57,7 +57,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ title, price, exterior, inter
       </Card>
 
       <Modal opened={opened} onClose={close} title="Book Now" centered size='lg'>
-        <BookNowForm selectedPackage={title} />
+        <BookNowForm selectedPackage={title} close={close} />
       </Modal>
     </>
   )
