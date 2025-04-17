@@ -1,95 +1,12 @@
-"use client";
-import { Card, Container, Group, SegmentedControl, SimpleGrid, Space, Text, Title } from '@mantine/core';
-import styles from './page.module.css';
-import PricingCard from '@/components/PricingCard';
-import { useState } from 'react';
+"use client"
+import React, { useState } from 'react'
+import { Card, Container, Group, SegmentedControl, SimpleGrid, Space, Text, Title } from '@mantine/core'
+import styles from './PricingCards.module.scss'
+import { PricingCardsProps } from './Pricing.types'
+import PricingCard from '../PricingCard'
 
-export default function Pricing() {
+const PricingCards: React.FC<PricingCardsProps> = ({ packages, addOns }) => {
   const [value, setValue] = useState<string>('sedan');
-
-  const packageData = {
-    standard: {
-      title: "STANDARD",
-      price: {
-        sedan: "$100",
-        suv: "$115",
-        truck: "$140"
-      },
-      exterior: [
-        "WHEELS / TIRES",
-        "PRE WASH TREATMENT",
-        "FOAM HAND WASH",
-        "SPRAY WAX (1 MONTH)",
-        "TIRE SHINE"
-      ],
-      interior: [
-        "FULL VACUUM & AIR BLOWOUT",
-        "FULL WIPE DOWN",
-        "WINDOWS CLEANED",
-        "DOOR JAMS CLEANED"
-      ]
-    },
-    washWax: {
-      title: "WASH & WAX",
-      price: {
-        sedan: "$200",
-        suv: "$225",
-        truck: "$250"
-      },
-      exterior: [
-        "WHEELS / TIRES",
-        "PRE WASH & HAND WASH",
-        "PAINT DECONTAMINATION",
-        "CLAY BAR",
-        "CERAMIC PAINT PROTECTION (6 MONTH)",
-        "TIRE SHINE"
-      ],
-      interior: [
-        "FULL VACUUM & AIR BLOWOUT",
-        "FULL WIPE DOWN",
-        "WINDOWS CLEANED",
-        "DOOR JAMS CLEANED"
-      ]
-    },
-    fullDetail: {
-      title: "FULL DETAIL",
-      price: {
-        sedan: "$350",
-        suv: "$375",
-        truck: "$400"
-      },
-      exterior: [
-        "FULL WASH & WAX EXTERIOR PROCESS"
-      ],
-      interior: [
-        "FULL VACUUM AND AIR BLOWOUT",
-        "FULL LEATHER CLEANING OR FULL SHAMPOO CLEANING",
-        "FULL INTERIOR PANELS STEAMED CLEANED & SCRUB DOWN",
-        "WINDOWS CLEANED",
-        "DOOR JAMS CLEANED"
-      ]
-    }
-  };
-
-  const addOns = {
-    exterior: [
-      { service: "HEADLIGHT RESTORATION", price: "$80" },
-      { service: "ENGINE BAY CLEANING", price: "$60+" },
-      { service: "WINDSHIELD CERAMIC COATING", price: "$75+" }
-    ],
-    interior: [
-      { service: "SEAT SHAMPOO", price: "$100+" },
-      { service: "STEAM CLEAN INTERIOR", price: "$75+" },
-      { service: "LEATHER CLEANING", price: "$60+" },
-      { service: "ODOR REMOVAL", price: "Call for pricing" },
-      { service: "HEADLINER CLEANING", price: "Call for pricing" }
-    ],
-    additional: [
-      "RIM COATING",
-      "INTERIOR LEATHER COATING",
-      "WINDOW COATING"
-    ]
-  };
 
   return (
     <Container size="xl">
@@ -119,8 +36,8 @@ export default function Pricing() {
         </Group>
 
         {/* Service Packages */}
-        <SimpleGrid cols={{ base: 1, md: Object.values(packageData).length }}>
-          {Object.values(packageData).map((pkg) => (
+        <SimpleGrid cols={{ base: 1, md: packages.length }}>
+          {(packages ?? []).map((pkg) => (
             <PricingCard
               key={pkg.title}
               title={pkg.title}
@@ -181,5 +98,7 @@ export default function Pricing() {
         </Card>
       </main>
     </Container>
-  );
+  )
 }
+
+export default PricingCards

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { builder } from '@builder.io/sdk';
 import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core';
 import '@mantine/core/styles.css';
+
+builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 export const metadata: Metadata = {
   title: "Denis Mobil Detailing - Pricing",
