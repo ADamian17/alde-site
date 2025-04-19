@@ -92,42 +92,19 @@ export const registerPricingCards = () => {
         ],
       },
       {
-        name: "addOns",
-        type: "object",
+        name: "addOnsList",
+        type: "list",
         subFields: [
           {
-            name: "interior",
-            type: "list",
-            subFields: [
-              {
-                name: "service",
-                type: "string",
-              },
-              {
-                name: "price",
-                type: "string",
-              },
-            ],
+            name: "service",
+            type: "string",
           },
           {
-            name: "exterior",
-            type: "list",
-            subFields: [
-              {
-                name: "service",
-                type: "string",
-              },
-              {
-                name: "price",
-                type: "string",
-              },
-            ],
+            name: "price",
+            type: "string",
           },
         ],
-        defaultValue: {
-          interior: [],
-          exterior: [],
-        },
+        defaultValue: [],
       },
     ],
   });

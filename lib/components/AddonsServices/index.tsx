@@ -1,47 +1,35 @@
 import React from 'react'
-import { Card, CardSection } from '@mantine/core';
+import { Card, CardSection, Group } from '@mantine/core';
 
 import styles from './AddonsServices.module.scss'
 
 type AddOnType = Array<{ service: string; price: string }>;
 
 export type AddonsServicesProps = {
-  addOns: Record<'exterior' | 'interior', AddOnType>;
+  addOnsList: AddOnType;
 }
 
-const AddonsServices: React.FC<AddonsServicesProps> = ({ addOns }) => (
+const AddonsServices: React.FC<AddonsServicesProps> = ({ addOnsList }) => (
   <Card shadow='sm' radius={8}>
     <CardSection className={styles.cardHeader}>
       <h2 className={styles.cardTitle}>ADD-ONS (Optional Services)</h2>
     </CardSection>
 
     <div className={styles.addOnContent}>
-      <div className={styles.addOnGrid}>
-        {/* Exterior Add-ons */}
-        <div className={styles.addOnSection}>
-          <h3 className={styles.addOnSectionTitle}>EXTERIOR</h3>
-          <ul className={styles.addOnList}>
-            {addOns.exterior.map((item, index) => (
-              <li key={index} className={styles.addOnItem}>
-                <span>{item.service}</span>
-                <span className={styles.addOnPrice}>{item.price}$</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className={styles.addOnSection}>
+        <Group justify='space-between' className={styles.addOnSectionTitle}>
+          <h3>Add on</h3>
+          <p>price</p>
+        </Group>
 
-        {/* Interior Add-ons */}
-        <div className={styles.addOnSection}>
-          <h3 className={styles.addOnSectionTitle}>INTERIOR</h3>
-          <ul className={styles.addOnList}>
-            {addOns.interior.map((item, index) => (
-              <li key={index} className={styles.addOnItem}>
-                <span>{item.service}</span>
-                <span className={styles.addOnPrice}>{item.price}$</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className={styles.addOnList}>
+          {addOnsList.map((item, index) => (
+            <li key={index} className={styles.addOnItem}>
+              <span>{item?.service}</span>
+              <span className={styles.addOnPrice}>{item?.price}$</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   </Card>
