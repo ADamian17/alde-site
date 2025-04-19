@@ -30,7 +30,7 @@ const PricingCardsContainer: React.FC<PricingCardsContainerProps> = ({ packages,
 
       <Space h="xl" />
 
-      <Card shadow='sm' radius={8} ta='center' mb="2rem">
+      <Card shadow='sm' radius={8} ta='center'>
         <Text>PRICE MAY VARY ON THE CONDITION OF THE VEHICLE</Text>
         <Text>FINAL PRICE IS CONFIRMED AFTER INSPECTION</Text>
 
