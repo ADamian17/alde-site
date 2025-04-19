@@ -1,8 +1,8 @@
-import { Builder } from '@builder.io/react';
-import PricingCards from ".";
+import { Builder } from "@builder.io/react";
+import PricingCardsContainer from ".";
 
 export const registerPricingCards = () => {
-  Builder.registerComponent(PricingCards, {
+  Builder.registerComponent(PricingCardsContainer, {
     name: "PricingCards",
     inputs: [
       {
@@ -20,14 +20,14 @@ export const registerPricingCards = () => {
             enum: ["sedan", "suv", "truck"],
             name: "value",
             type: "string",
-          }
+          },
         ],
         defaultValue: [
           {
             label: "Sedan",
-            value: "sedan"
-          }
-        ]
+            value: "sedan",
+          },
+        ],
       },
       {
         name: "packages",
@@ -52,8 +52,8 @@ export const registerPricingCards = () => {
               {
                 name: "truck",
                 type: "string",
-              }
-            ]
+              },
+            ],
           },
           {
             name: "exterior",
@@ -62,9 +62,9 @@ export const registerPricingCards = () => {
               {
                 name: "service",
                 type: "string",
-              }
+              },
             ],
-            defaultValue: []
+            defaultValue: [],
           },
           {
             name: "interior",
@@ -73,9 +73,9 @@ export const registerPricingCards = () => {
               {
                 name: "service",
                 type: "string",
-              }
+              },
             ],
-            defaultValue: []
+            defaultValue: [],
           },
         ],
         defaultValue: [
@@ -84,16 +84,16 @@ export const registerPricingCards = () => {
             price: {
               sedan: "0",
               suv: "0",
-              truck: "0"
+              truck: "0",
             },
             exterior: [],
-            interior: []
-          }
-        ]
+            interior: [],
+          },
+        ],
       },
       {
         name: "addOns",
-        type: "list",
+        type: "object",
         subFields: [
           {
             name: "interior",
@@ -106,9 +106,9 @@ export const registerPricingCards = () => {
               {
                 name: "price",
                 type: "string",
-              }
-            ]
-          }, 
+              },
+            ],
+          },
           {
             name: "exterior",
             type: "list",
@@ -120,15 +120,15 @@ export const registerPricingCards = () => {
               {
                 name: "price",
                 type: "string",
-              }
-            ]
-          }
+              },
+            ],
+          },
         ],
         defaultValue: {
           interior: [],
-          exterior: []
-        }
-      }
-    ]
+          exterior: [],
+        },
+      },
+    ],
   });
-}
+};

@@ -51,7 +51,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ title, price, exterior, inter
           </div>
         </div>
 
-        <Button color='violet' onClick={open}>
+        <Button color='violet' onClick={open} mt={28}>
           Book Now
         </Button>
       </Card>

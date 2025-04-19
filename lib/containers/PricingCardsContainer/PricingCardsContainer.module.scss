@@ -1,0 +1,86 @@
+/* styles/Pricing.module.css */
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Header styles */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Ceramic coating styles */
+.ceramicContent {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.ceramicText {
+  margin-bottom: 1.5rem;
+}
+
+.additionalTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.additionalList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Contact styles */
+.contactContent {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.disclaimer {
+  margin-bottom: 0.5rem;
+}
+
+.phoneContainer {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.5rem 0;
+}
+
+.phoneLink {
+  color: #dc2626;
+  text-decoration: none;
+}
+
+.phoneLink:hover {
+  text-decoration: underline;
+}
+
+.socialContainer {
+  margin-top: 1rem;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  color: #6b6b6b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.socialLink:hover {
+  color: #1a1a1a;
+}
+
+.socialIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.5rem;
+}

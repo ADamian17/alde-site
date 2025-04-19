@@ -1,0 +1,94 @@
+/* Add-on card styles */
+.addOnCard,
+.ceramicCard,
+.contactCard {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.cardHeader {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.addOnContent {
+  padding: 1.5rem;
+}
+
+.addOnGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .addOnGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.addOnSection {
+  margin-bottom: 1rem;
+}
+
+.addOnSectionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.addOnList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.addOnItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addOnPrice {
+  font-weight: 600;
+}
+
+/* Ceramic coating styles */
+.ceramicContent {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.ceramicText {
+  margin-bottom: 1.5rem;
+}
+
+.additionalTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.additionalList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
